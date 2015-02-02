@@ -1,0 +1,76 @@
+<head>
+  <title>Canal</title>
+</head>
+
+
+<template name="layout">
+  <div class="container">
+    {{> header}}
+    <div id="main" class="row-fluid">
+      {{> yield}}
+    </div>
+  </div>
+</template>
+
+
+<template name="header">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Canal</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{pathFor 'matches'}}">Matches</a></li>
+          {{> loginButtons}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<template name="matches">
+  <li class="matches">
+    {{#each matches}}
+      <p>hi</p>
+      <div>{{getUser}}</div>
+    {{/each}}
+  </li>
+</template>
+
+
+<template name="startups">
+  <div>
+    {{title.profile.name}}
+  </div>
+
+  <input class="btn btn-default pass" type="button" value="Pass">
+  <input class="btn btn-primary meet" type="button" value="Meet">
+</template>
+
+<template name="investors">
+  <div>
+    {{title.profile.name}}
+  </div>
+
+  <input class="btn btn-default pass" type="button" value="Pass">
+  <input class="btn btn-primary meet" type="button" value="Meet">
+</template>
+
+<template name="hello">
+<p>Hello</p>
+</template>
+
+
+
+
+
+
+
+
