@@ -9,8 +9,7 @@ Meteor.subscribe("matches");
 Meteor.subscribe("chat");
 
 Template.main.rendered = function(){
-  $('.ui.sidebar').sidebar('attach events', '.item');
-	$('.ui.dropdown').dropdown();
+  $('.ui.sidebar').sidebar('attach events', '.text .item');
 };
 
 Template.chat.helpers({
@@ -56,37 +55,6 @@ Template.matches.helpers({
 		return Meteor.users.findOne(type);
 	}
 });
-
-// Template.startups.events({
-// 	'click .meet': function(e, template){
-// 		Meteor.call('meet', template.data.title._id, function(error, result) {
-// 			if (error)
-// 			  return throwError(error.reason);
-// 		});
-// 	},
-// 	'click .pass': function(e, template){
-// 		Meteor.call('pass', template.data.title._id, function(error, result) {
-// 			if (error)
-// 			  return throwError(error.reason);
-// 		});
-// 	}
-// });
-
-
-// Template.investors.events({
-// 	'click .meet': function(e, template){
-// 		Meteor.call('meet', template.data.title._id, function(error, result) {
-// 			if (error)
-// 			  return throwError(error.reason);
-// 		});
-// 	},
-// 	'click .pass': function(e, template){
-// 		Meteor.call('pass', template.data.title._id, function(error, result) {
-// 			if (error)
-// 			  return throwError(error.reason);
-// 		});
-// 	}
-// });
 
 //==============
 
@@ -167,7 +135,23 @@ Template.main.events({
 			  return throwError(error.reason);
 			pickUser();
 		});
-	}
+	},
+	'click .home': function(e, template){
+	 	$(".ui.sidebar").sidebar("setting", {
+	    onHidden: function () {
+	    	pickUser();
+	    }
+		}).sidebar('hide');		
+	},
+	'click .logout': function(e, template){
+	 	$(".ui.sidebar").sidebar("setting", {
+	    onHidden: function () {
+	    	Meteor.logout();
+	    	Router.go('/');
+	    }
+		}).sidebar('hide');
+	},
+
 });
 
 
