@@ -2,6 +2,10 @@ Meteor.publish("matches", function(){
 	return Matches.find();
 });
 
+Meteor.publish("chat", function(){
+	return Chat.find();
+});
+
 Meteor.publish("userData", function (){
   // if (this.userId) {
   //   return Meteor.users.find({_id: this.userId},
@@ -11,35 +15,6 @@ Meteor.publish("userData", function (){
   // }
   return Meteor.users.find();
 });
-
-Meteor.methods({
-	meet: function(userId){
-		Meteor.users.update( { _id: this.userId }, { $push: { 'profile.meet': userId }} );
-		if (_.contains(Meteor.users.findOne(userId).profile.meet, this.userId)){
-			console.log('matched!');
-			if (Meteor.user().profile.type === 'startup'){
-				var startup = this.userId;
-				var investor = userId;
-			} else {
-				var startup = userId;
-				var investor = this.userId;		
-			}
-			var matchId = Matches.insert({
-				startup: startup,
-				investor: investor
-			});
-			Meteor.users.update({_id: this.userId}, {$push: {'profile.match': matchId}});
-			Meteor.users.update({_id: userId},      {$push: {'profile.match': matchId}});
-		}
-	}
-});
-
-Meteor.methods({
-	pass: function(userId){
-		Meteor.users.update( { _id: this.userId }, { $push: { 'profile.pass': userId }} );
-	}
-});
-
 
 
 if (Meteor.users.find().count() === 0){

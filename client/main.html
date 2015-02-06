@@ -2,16 +2,13 @@
   <title>Canal</title>
 </head>
 
+<body>
+</body>
 
-<template name="layout">
-  <div class="container">
-    {{> header}}
-    <div id="main" class="row-fluid">
-      {{> yield}}
-    </div>
-  </div>
-</template>
-
+<!-- <template name="layout">
+  {{> header}}
+  {{> yield}}
+</template> -->
 
 <template name="header">
   <nav class="navbar navbar-default" role="navigation">
@@ -38,12 +35,27 @@
 <template name="matches">
   <li class="matches">
     {{#each matches}}
-      <p>hi</p>
-      <div>{{getUser}}</div>
+      <a href="{{pathFor 'chat'}}">{{getUser.profile.name}}</a>
     {{/each}}
   </li>
 </template>
 
+<template name="chat">
+  <!-- <p>{{profile.name}}</p> -->
+
+  <ul>
+  {{#each messages}}
+    <li>{{line}} - ({{senderName sender}})</li>
+  {{/each}}
+  </ul>
+
+  <form>
+    <div class="form-group">
+      <input name="message" id="message" type="text" value="" placeholder="Message" class="form-control"/>
+    </div>
+    <input type="submit" value="Send" class="btn btn-primary"/>
+  </form>
+</template>
 
 <template name="startups">
   <div>
@@ -63,9 +75,111 @@
   <input class="btn btn-primary meet" type="button" value="Meet">
 </template>
 
-<template name="hello">
-<p>Hello</p>
+
+
+<template name="navigation">
+  <div class="ui fluid text menu">
+    <a class="header item"><i class="chevron left icon"></i></a>
+   
+  </div>
+
 </template>
+
+<template name="top">
+  <h2 class="ui center aligned header">
+    Canal
+  </h2>
+  <div class="ui buttons">
+    <a class="ui button" href="{{pathFor 'login'}}">Log In</a>
+    <div class="or"></div>
+    <a class="ui positive button" href="{{pathFor 'signup'}}">Sign Up</a>
+  </div>
+</template>
+
+<template name="signup">
+  <div class="ui fluid three item text menu">
+    <a class="header item" href="{{pathFor 'top'}}"><i class="chevron left icon"></i></a>
+    <p class="item">Sign Up</p>
+    <div class="item"></div>
+  </div>
+  <form>
+    <div class="ui fluid input"><input type="email" name="email" placeholder="Email" required></div>
+    <div class="ui fluid input"><input type="password" name="password" placeholder="Password" required></div>
+    <input class="ui submit button" type="submit" value="Sign Up"/>
+  </form>
+</template>
+
+<template name="login">
+  <div class="ui fluid three item text menu">
+    <a class="header item" href="{{pathFor 'top'}}"><i class="chevron left icon"></i></a>
+    <p class="item">Log In</p>
+    <div class="item"></div>
+  </div>
+  <form>
+    <div class="ui fluid input"><input type="email" name="email" placeholder="Email" required></div>
+    <div class="ui fluid input"><input type="password" name="password" placeholder="Password" required></div>
+    <input class="ui submit button" type="submit" value="Log In"/>
+  </form>
+  <p>Forgot Password</p>
+</template>
+
+<template name="occupation">
+  <p>I'm signing up as...</p>
+  <div class="ui buttons">
+    <div class="ui button startup">Startup</div>
+    <div class="or"></div>
+    <div class="ui positive button investor">Investor</div>
+  </div>  
+</template>
+
+<template name="main">
+  <div class="ui large inverted vertical sidebar menu">
+    <a class="item" href="/matches">Home</a>
+    <a class="item">Profile</a>
+    <a class="item">Logout</a>
+  </div>
+
+  <div class="pusher">
+    <div class="ui fluid three item text menu">
+      <div class="item"><i class="large content icon"></i></div>
+      <p class="item">Canal</p>
+      <div class="item"><i class="large comment icon"></i></div>
+    </div>
+
+    <div class="ui card">
+      <div class="content">
+        <a class="header" href="/">{{profile.name}}</a>
+      </div>
+<!--       <div class="extra content">
+        <div class="right floated author">
+          <img class="ui avatar image" src="http://semantic-ui.com/images/avatar/large/steve.jpg"> Matt
+        </div>
+      </div>
+      <div class="content">
+        <a class="header">Stevie Feliciano</a>
+        <div class="meta">
+          <span class="date">Joined in 2014</span>
+        </div>
+        <div class="description">
+          Stevie Feliciano is a library scientist living in New York City. She likes to spend her time reading, running, and writing.
+        </div>
+      </div> -->
+    </div>
+
+
+    <div class="ui button pass">Pass</div>
+    <div class="ui primary button meet">Meet</div>
+  </div>
+
+
+</template>
+
+
+
+
+
+
+
 
 
 
