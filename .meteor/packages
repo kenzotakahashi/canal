@@ -7,8 +7,11 @@
 meteor-platform
 mizzao:bootstrap-3
 underscore
-ian:accounts-ui-bootstrap-3
 accounts-password
 iron:router
 nooitaf:semantic-ui
 jquery
+accounts-google
+service-configuration
+mrt:cheerio
+froatsnook:request
