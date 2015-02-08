@@ -1,5 +1,7 @@
 <head>
   <title>Canal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
 </head>
 
 <body>
@@ -10,90 +12,20 @@
   {{> yield}}
 </template> -->
 
-<template name="matches">
-  <div class="pusher">
-    <div class="ui fluid three item text menu">
-      <a class="header item back"><i class="chevron left icon"></i></a>
-      <p class="item">Matches</p>
-      <div class="item"></div>
-    </div>
-<!--     <li class="matches">
-      {{#each matches}}
-        <a href="{{pathFor 'chat'}}">{{getUser}}</a>
-      {{/each}}
-    </li> -->
-
-    <div class="ui selection list matches">
-      {{#each matches}}
-      <a class="item" href="{{pathFor 'chat'}}">
-        <!-- <img class="ui avatar image" src="/images/avatar/small/helen.jpg"> -->
-        <div class="content">
-          <div class="header">{{getUser}}</div>
-        </div>
-      </a>
-      {{/each}}
-    </div>
-
-  </div>
-</template>
-
-<template name="chat">
-
-  <div class="pusher">
-    <div class="ui fluid three item text menu">
-      <a class="header item" href="{{pathFor 'matches'}}"><i class="chevron left icon"></i></a>
-      <p class="item">{{user}}</p>
-      <div class="item"></div>
-    </div>
-
-
-    <div class="ui list">
-    {{#each messages}}
-      {{#if myLine sender}}
-        <div class="ui teal label">{{line}}</div>
-      <!-- <li>{{line}} - ({{senderName sender}})</li> -->
-      {{else}}
-        <div class="ui label">{{line}}</div>
-      {{/if}}
-      <br><br>
-    {{/each}}
-    </div>
-
-
-    <form>
-      <div class="ui fluid action input">
-        <input name="message" id="message" type="text" value="" placeholder="Message"/>
-        <div class="ui button">Send</div>
-      </div>
-    </form>
-
-  </div>
-</template>
-
-
-<template name="navigation">
-  <div class="ui fluid text menu">
-    <a class="header item"><i class="chevron left icon"></i></a>
-   
-  </div>
-
-</template>
-
-
 
 <template name="main">
   {{> sidebar}}
 
   <div class="pusher">
-    <div class="ui fluid three item text menu">
+    <div class="ui fluid three item text teal inverted large menu">
       <div class="item"><i class="large content icon"></i></div>
-      <p class="item">Canal</p>
+      <h2 class="item centerMenu">Canal</h2>
       <a class="item" href="{{pathFor 'matches'}}"><i class="large comment icon"></i></a>
     </div>
 
     {{#if this}}
-      {{#if isStartup}}
         <div class="ui card">
+      {{#if isStartup}}
 <!--           <div class="image">
             <img src="{{services.google.picture}}">
           </div> -->
@@ -106,10 +38,7 @@
               {{profile.description}}
             </div>
           </div>
-        </div>
-
       {{else}}
-        <div class="ui card">
           <div class="content">
             <a class="header">{{profile.companyName}}</a>
             <div class="meta">
@@ -120,13 +49,16 @@
             </div>
           </div>
           <div class="extra content">
-            <a href="{{profile.url}}" target="_blank">{{profile.url}}</a>
-            <a href="{{profile.angelList}}" target="_blank">{{profile.angelList}}</a>
+            <div><a href="{{profile.url}}" target="_blank">{{profile.url}}</a></div>
+            <div><a href="{{profile.angelList}}" target="_blank">{{profile.angelList}}</a></div>
+          </div>
+      {{/if}}
+          <div class="ui two bottom attached buttons">
+            <div class="ui button pass">Pass</div>
+            <div class="ui teal button meet">Meet</div>
           </div>
         </div>
-      {{/if}}
-    <div class="ui button pass">Pass</div>
-    <div class="ui primary button meet">Meet</div>
+
     {{else}}
     <p>No user available</p>
     {{/if}}
@@ -135,229 +67,13 @@
 </template>
 
 <template name="sidebar">
-  <div class="ui large inverted vertical sidebar menu">
-    <a class="item home">Home</a>
-    <a class="item profile">Profile</a>
+  <div class="ui large vertical sidebar menu">
+    <a class="item home"><i class="home icon"></i>Home</a>
+    <a class="item profile"><i class="edit icon"></i>Profile</a>
     <a class="item logout">Logout</a>
   </div>
 </template>
 
-<template name="profile">
-  {{> sidebar}}
-
-  <div class="pusher">
-    <div class="ui fluid three item text menu">
-      <div class="item"><i class="large content icon"></i></div>
-      <p class="item">Profile</p>
-      <a class="item" href="{{pathFor 'edit'}}">Edit</a>
-    </div>
-    
-    {{#if isStartup}}
-    <div class="ui card">
-      <div class="content">
-        <a class="header">{{currentUser.profile.companyName}}</a>
-        <div class="meta">
-          <span class="date">{{currentUser.profile.location}}</span>
-        </div>
-        <div class="description">
-          {{currentUser.profile.description}}
-        </div>
-      </div>
-      <div class="extra content">
-        <a href="{{currentUser.profile.url}}" target="_blank">{{currentUser.profile.url}}</a>
-        <a href="{{currentUser.profile.angelList}}" target="_blank">{{currentUser.profile.angelList}}</a>
-      </div>
-    </div>
-    {{else}}
-     <div class="ui card">
-      <div class="image">
-        <img src="{{currentUser.services.google.picture}}">
-      </div>
-      <div class="content">
-        <a class="header">{{currentUser.profile.name}}</a>
-        <div class="meta">
-          <span class="date">{{currentUser.profile.location}}</span>
-        </div>
-        <div class="description">
-          {{currentUser.profile.description}}
-        </div>
-      </div>
-    </div>   
-    {{/if}}
-
-  </div>
-</template>
-
-<template name="edit">
-  <div class="pusher">
-    <div class="ui fluid three item text menu">
-      <a class="header item" href="{{pathFor 'profile'}}"><i class="chevron left icon"></i></a>
-      <p class="item">Edit Profile</p>
-      <div class="item"></div>
-    </div>
-    
-    {{#if isStartup}}
-    <form>
-      <div class="ui fluid input">
-        <div class="field">
-          <label>Company Name</label>
-          <input type="text" name="name" placeholder="Company Name"
-                 value="{{currentUser.profile.companyName}}" required>
-        </div>
-      </div>
-      <div class="ui fluid input">
-        <div class="field">
-          <label>Location</label>
-          <input type="text" name="location" placeholder="San Francisco"
-                 value="{{currentUser.profile.location}}">
-        </div>
-      </div>
-      <div class="ui fluid input">
-        <div class="field">
-          <label>Company URL</label>
-          <input type="url" name="url" placeholder="Company URL" value="{{currentUser.profile.url}}">
-        </div>
-      </div>
-      <div class="ui labeled fluid input">
-        <div class="field">
-          <label>AngelList URL</label>
-          <input type="url" name="angelList" placeholder="https://angel.co/companyname"
-                 value="{{currentUser.profile.angelList}}">
-        </div>
-      </div>
-      <div class="ui form">
-        <div class="field">
-          <label>Description</label>
-          <textarea name="description" placeholder="Description" value="{{currentUser.profile.description}}">
-          </textarea>
-        </div>
-      </div>
-      <input class="ui submit button" type="submit" value="Save"/>
-    </form>
-    {{else}}
-    <form>
-      <div class="ui fluid input">
-        <div class="field">
-          <label>Name</label>
-          <input type="text" name="name" placeholder="Name"
-                 value="{{currentUser.profile.name}}" required>
-        </div>
-      </div>
-      <div class="ui fluid input">
-        <div class="field">
-          <label>Location</label>
-          <input type="text" name="location" placeholder="San Francisco"
-                 value="{{currentUser.profile.location}}">
-        </div>
-      </div>
-      <div class="ui form">
-        <div class="field">
-          <label>Description</label>
-          <textarea name="description" placeholder="Description" value="{{currentUser.profile.description}}">
-          </textarea>
-        </div>
-      </div>
-      <input class="ui submit button" type="submit" value="Save"/>  
-    </form>
-    {{/if}}
-  </div>  
-</template>
-
-<template name="companyName">
-  <div name="pusher">
-    <form>
-      <h3>What is your company name?</h3>
-      <div class="ui fluid input">
-        <input type="text" name="name">
-      </div>
-    </form>
-    <input class="ui submit button" type="submit" value="Submit"/>
-  </div>
-</template>
-
-
-<template name="detail">
-
-</template>
-
-
-<template name="top">
-  <div class="pusher">
-    <h2 class="ui center aligned header">
-      Canal
-    </h2>
-
-    <div class="ui google plus button">
-      <i class="google plus icon"></i>
-      Continue with Google
-    </div>
-
-    <br>
-    <br>
-    <br>
-
-    <div class="ui buttons">
-      <a class="ui button" href="{{pathFor 'login'}}">Log In</a>
-      <div class="or"></div>
-      <a class="ui positive button" href="{{pathFor 'signup'}}">Sign Up</a>
-    </div>
-  </div>
-</template>
-
-
-<template name="occupation">
-  <div class="pusher">
-    <p>I'm signing up as...</p>
-    <div class="ui buttons">
-      <div class="ui button startup">Startup</div>
-      <div class="or"></div>
-      <div class="ui positive button investor">Investor</div>
-    </div>
-  </div> 
-</template>
-
-<template name="signup">
-  <div class="pusher">
-    <div class="ui fluid three item text menu">
-      <a class="header item" href="{{pathFor 'top'}}"><i class="chevron left icon"></i></a>
-      <p class="item">Sign Up</p>
-      <div class="item"></div>
-    </div>
-    <form>
-      <div class="ui fluid input"><input type="email" name="email" placeholder="Email" required></div>
-      <div class="ui fluid input"><input type="password" name="password" placeholder="Password" required></div>
-      <input class="ui submit button" type="submit" value="Sign Up"/>
-    </form>
-  </div>
-</template>
-
-<template name="login">
-  <div class="pusher">
-    <div class="ui fluid three item text menu">
-      <a class="header item" href="{{pathFor 'top'}}"><i class="chevron left icon"></i></a>
-      <p class="item">Log In</p>
-      <div class="item"></div>
-    </div>
-
-    <div class="ui google plus button">
-      <i class="google plus icon"></i>
-      Login with Google
-    </div>
-
-    <div class="ui horizontal divider">
-      Or
-    </div>
-
-    <form>
-      <div class="ui fluid input"><input type="email" name="email" placeholder="Email" required></div>
-      <div class="ui fluid input"><input type="password" name="password" placeholder="Password" required></div>
-      <input class="ui submit button" type="submit" value="Log In"/>
-    </form>
-
-
-
-  </div>
-</template>
 
 
 

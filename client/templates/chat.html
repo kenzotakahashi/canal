@@ -1,0 +1,38 @@
+<template name="chat">
+
+  <div class="pusher">
+    <div class="ui fluid three item text teal inverted large menu">
+      <a class="item" href="{{pathFor 'matches'}}"><i class="chevron left icon"></i></a>
+      <p class="item">{{user}}</p>
+      <div class="item"></div>
+    </div>
+
+<!--     <div class="ui fluid three item text teal inverted large menu">
+      <div class="item"><i class="large content icon"></i></div>
+      <h2 class="item centerMenu">Canal</h2>
+      <a class="item" href="{{pathFor 'matches'}}"><i class="large comment icon"></i></a>
+    </div> -->
+
+
+    <div class="ui list">
+    {{#each messages}}
+      {{#if myLine sender}}
+        <div class="ui teal label myLine">{{line}}</div>
+      <!-- <li>{{line}} - ({{senderName sender}})</li> -->
+      {{else}}
+        <div class="ui label">{{line}}</div>
+      {{/if}}
+      <br><br>
+    {{/each}}
+    </div>
+
+
+    <form>
+      <div class="ui fluid action input footer">
+        <input name="message" id="message" type="text" value="" placeholder="Message"/>
+        <div class="ui button">Send</div>
+      </div>
+    </form>
+
+  </div>
+</template>

@@ -1,0 +1,45 @@
+<template name="profile">
+  {{> sidebar}}
+
+  <div class="pusher">
+    <div class="ui fluid three item text menu">
+      <div class="item"><i class="large content icon"></i></div>
+      <p class="item">Profile</p>
+      <a class="item" href="{{pathFor 'edit'}}">Edit</a>
+    </div>
+    
+    {{#if isStartup}}
+    <div class="ui card">
+      <div class="content">
+        <a class="header">{{currentUser.profile.companyName}}</a>
+        <div class="meta">
+          <span class="date">{{currentUser.profile.location}}</span>
+        </div>
+        <div class="description">
+          {{currentUser.profile.description}}
+        </div>
+      </div>
+      <div class="extra content">
+        <a href="{{currentUser.profile.url}}" target="_blank">{{currentUser.profile.url}}</a>
+        <a href="{{currentUser.profile.angelList}}" target="_blank">{{currentUser.profile.angelList}}</a>
+      </div>
+    </div>
+    {{else}}
+     <div class="ui card">
+      <div class="image">
+        <img src="{{currentUser.services.google.picture}}">
+      </div>
+      <div class="content">
+        <a class="header">{{currentUser.profile.name}}</a>
+        <div class="meta">
+          <span class="date">{{currentUser.profile.location}}</span>
+        </div>
+        <div class="description">
+          {{currentUser.profile.description}}
+        </div>
+      </div>
+    </div>   
+    {{/if}}
+
+  </div>
+</template>

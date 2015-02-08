@@ -1,0 +1,74 @@
+<template name="edit">
+  <div class="pusher">
+    <div class="ui fluid three item text teal inverted large menu">
+      <a class="item" href="{{pathFor 'profile'}}"><i class="chevron left icon"></i></a>
+      <p class="item">Edit Profile</p>
+      <div class="item"></div>
+    </div>
+    
+    {{#if isStartup}}
+    <form>
+      <div class="ui fluid input">
+        <div class="field">
+          <label>Company Name</label>
+          <input type="text" name="name" placeholder="Company Name"
+                 value="{{currentUser.profile.companyName}}" required>
+        </div>
+      </div>
+      <div class="ui fluid input">
+        <div class="field">
+          <label>Location</label>
+          <input type="text" name="location" placeholder="San Francisco"
+                 value="{{currentUser.profile.location}}">
+        </div>
+      </div>
+      <div class="ui fluid input">
+        <div class="field">
+          <label>Company URL</label>
+          <input type="url" name="url" placeholder="Company URL" value="{{currentUser.profile.url}}">
+        </div>
+      </div>
+      <div class="ui labeled fluid input">
+        <div class="field">
+          <label>AngelList URL</label>
+          <input type="url" name="angelList" placeholder="https://angel.co/companyname"
+                 value="{{currentUser.profile.angelList}}">
+        </div>
+      </div>
+      <div class="ui form">
+        <div class="field">
+          <label>Description</label>
+          <textarea name="description" placeholder="Description" value="{{currentUser.profile.description}}">
+          </textarea>
+        </div>
+      </div>
+      <input class="ui submit button" type="submit" value="Save"/>
+    </form>
+    {{else}}
+    <form>
+      <div class="ui fluid input">
+        <div class="field">
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Name"
+                 value="{{currentUser.profile.name}}" required>
+        </div>
+      </div>
+      <div class="ui fluid input">
+        <div class="field">
+          <label>Location</label>
+          <input type="text" name="location" placeholder="San Francisco"
+                 value="{{currentUser.profile.location}}">
+        </div>
+      </div>
+      <div class="ui form">
+        <div class="field">
+          <label>Description</label>
+          <textarea name="description" placeholder="Description" value="{{currentUser.profile.description}}">
+          </textarea>
+        </div>
+      </div>
+      <input class="ui submit button" type="submit" value="Save"/>  
+    </form>
+    {{/if}}
+  </div>  
+</template>

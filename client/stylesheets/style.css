@@ -1,0 +1,62 @@
+@media only screen and (max-width: @computerBreakpoint) {
+  html.ios {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.submit {
+	width: 100%;
+	margin: 1em 0.25em 0em 0em !important;
+}
+
+.ui.card {
+	margin: 0 auto;
+}
+
+.google.plus.button {
+	width: 100%;
+}
+
+.google.plus.button.login {
+	margin-top: 100px;
+}
+
+.myLine {
+	float: right;
+}
+
+.ui.text.menu {
+	margin-top: 0em;
+}
+
+.ui.text.menu .item {
+	border-top: 0.5em solid transparent !important;
+	border-bottom: 0.5em solid transparent;
+	/*color: white;*/
+}
+
+.myLabel {
+	font-size: 18px;
+	text-align: center;
+	margin-top: 40px !important;
+	margin-bottom: 30px !important;
+}
+
+.footer {
+	position: fixed !important;
+	bottom: 0px;
+	width: 100%;
+	z-index: 1;
+}
+
+.ui.center.header {
+	font-size: 40px;
+	padding-top: 100px;
+}
+
+
+
+
+
+

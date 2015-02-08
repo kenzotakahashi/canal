@@ -1,0 +1,25 @@
+<template name="login">
+  <div class="pusher">
+    <div class="ui fluid three item text teal inverted large menu">
+      <a class="item" href="{{pathFor 'top'}}"><i class="chevron left icon"></i></a>
+      <p class="item">Log In</p>
+      <div class="item"></div>
+    </div>
+
+    <div class="ui google plus button login">
+      <i class="google plus icon"></i>
+      Login with Google
+    </div>
+
+    <div class="ui horizontal divider">
+      Or
+    </div>
+
+    <form>
+      <div class="ui fluid input"><input type="email" name="email" placeholder="Email" required></div>
+      <div class="ui fluid input"><input type="password" name="password" placeholder="Password" required></div>
+      <input class="ui submit button" type="submit" value="Log In"/>
+    </form>
+
+  </div>
+</template>

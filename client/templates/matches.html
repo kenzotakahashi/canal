@@ -1,0 +1,26 @@
+<template name="matches">
+  <div class="pusher">
+    <div class="ui fluid three item text menu">
+      <a class="header item back"><i class="chevron left icon"></i></a>
+      <p class="item">Matches</p>
+      <div class="item"></div>
+    </div>
+<!--     <li class="matches">
+      {{#each matches}}
+        <a href="{{pathFor 'chat'}}">{{getUser}}</a>
+      {{/each}}
+    </li> -->
+
+    <div class="ui selection list matches">
+      {{#each matches}}
+      <a class="item" href="{{pathFor 'chat'}}">
+        <!-- <img class="ui avatar image" src="/images/avatar/small/helen.jpg"> -->
+        <div class="content">
+          <div class="header">{{getUser}}</div>
+        </div>
+      </a>
+      {{/each}}
+    </div>
+
+  </div>
+</template>
