@@ -17,10 +17,10 @@
     <div class="ui list">
     {{#each messages}}
       {{#if myLine sender}}
-        <div class="ui teal label myLine">{{line}}</div>
+        <div align="right"><div class="ui teal label lineRight">{{line}}</div></div>
       <!-- <li>{{line}} - ({{senderName sender}})</li> -->
       {{else}}
-        <div class="ui label">{{line}}</div>
+        <div class="ui label lineLeft">{{line}}</div>
       {{/if}}
       <br><br>
     {{/each}}
@@ -30,7 +30,7 @@
     <form>
       <div class="ui fluid action input footer">
         <input name="message" id="message" type="text" value="" placeholder="Message"/>
-        <div class="ui button">Send</div>
+        <div class="ui button send">Send</div>
       </div>
     </form>
 

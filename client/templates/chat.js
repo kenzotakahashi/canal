@@ -11,10 +11,11 @@ Template.chat.helpers({
 });
 
 Template.chat.events({
-	'submit form': function(e, template){
+	'click .send, submit form': function(e, template){
 		e.preventDefault();
 
-		var $body = $(e.target).find('[name=message]');
+		// var $body = $(e.target).find('[name=message]');
+		var $body = $('#message');
     var message = {
       match: this.matchId,
       line: $body.val()

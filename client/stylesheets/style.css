@@ -22,8 +22,12 @@
 	margin-top: 100px;
 }
 
-.myLine {
-	float: right;
+.lineRight {
+	margin-right: 20px !important;
+}
+
+.lineLeft {
+	margin-left: 20px !important;
 }
 
 .ui.text.menu {
