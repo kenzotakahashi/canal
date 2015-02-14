@@ -5,6 +5,19 @@
   }
 }
 
+/*@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px;
+    background: #eee;
+  }
+}*/
+
+.body {
+	font-size: 1.5em;
+}
+
 .submit {
 	width: 100%;
 	margin: 1em 0.25em 0em 0em !important;
@@ -18,16 +31,16 @@
 	width: 100%;
 }
 
-.google.plus.button.login {
-	margin-top: 100px;
+.google.plus.button.login, .signupForm {
+	margin-top: 20%;
 }
 
 .lineRight {
-	margin-right: 20px !important;
+	margin-right: 1em !important;
 }
 
 .lineLeft {
-	margin-left: 20px !important;
+	margin-left: 1em !important;
 }
 
 .ui.text.menu {
@@ -35,17 +48,17 @@
 }
 
 .ui.text.menu .item {
-	border-top: 0.5em solid transparent !important;
+	border-top: 1.4em solid transparent !important;
 	border-bottom: 0.5em solid transparent;
 	/*color: white;*/
 }
 
-.myLabel {
+/*.myLabel {
 	font-size: 18px;
 	text-align: center;
 	margin-top: 40px !important;
 	margin-bottom: 30px !important;
-}
+}*/
 
 .footer {
 	position: fixed !important;
@@ -54,9 +67,11 @@
 	z-index: 1;
 }
 
+
+/*Title*/
 .ui.center.header {
-	font-size: 40px;
-	padding-top: 100px;
+	font-size: 2em;
+	padding-top: 25%;
 }
 
 
